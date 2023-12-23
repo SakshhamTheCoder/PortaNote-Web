@@ -17,7 +17,9 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  color: theme('colors.gray.50');
+  padding-left: 1rem;
+  padding-right: 1rem;
   background: linear-gradient(
       to bottom,
       transparent,
