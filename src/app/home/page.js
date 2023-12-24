@@ -1,10 +1,10 @@
 "use client";
-import Image from 'next/image';
 import { UserAuth } from "../context/AuthContext";
 import { useEffect, useState } from 'react';
 import { useRouter } from "next/navigation";
-import { getFirestore, doc, query, getDocs, collection, orderBy } from "firebase/firestore";
+import { getFirestore, query, getDocs, collection, orderBy } from "firebase/firestore";
 import { firebase_app } from '../firebase';
+import Navbar from "../components/Navbar";
 
 
 export default function Home() {
@@ -30,21 +30,23 @@ export default function Home() {
     return (
         user ?
             <main className="flex min-h-screen">
-                <div className="flex flex-col items-center justify-center flex-1">
+                <Navbar />
+                <div className="flex flex-col items-center justify-center flex-1 mt-20">
                     <div className='grid grid-cols-3 gap-4 p-4'>
-
                         {
                             notes.length > 0 ?
                                 notes.map((note, i) => (
-
                                     <div
-                                        className="rounded-lg p-6 bg-neutral-700 block max-w-sm" key={i}>
+                                        className="rounded-lg p-6 bg-neutral-700 block max-w-sm w-screen" key={i}>
                                         <h5
                                             className="mb-2 text-xl font-bold leading-tight text-neutral-50">
                                             {note.title}
                                         </h5>
                                         <p className="mb-4 font-light text-neutral-200 truncate">
                                             {note.content}
+                                        </p>
+                                        <p className="text-sm font-light text-neutral-200">
+                                            Created at {note.date.toDate().toLocaleString()}
                                         </p>
                                     </div>
 

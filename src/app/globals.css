@@ -15,7 +15,9 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
-
+textarea {
+    resize: none;
+}
 body {
   color: theme('colors.gray.50');
   padding-left: 1rem;

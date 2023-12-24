@@ -1,7 +1,7 @@
 "use client";
 import { UserAuth } from "../context/AuthContext";
-import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Navbar from "../components/Navbar";
 
 export default function SignUp() {
     const router = useRouter();
@@ -16,6 +16,7 @@ export default function SignUp() {
 
     return (
         <main className="flex min-h-screen">
+            <Navbar />
             <div className="flex flex-col items-center justify-center flex-1">
                 <div className="w-full max-w-xs">
                     <h1 className="text-5xl font-bold text-center">Sign up to PortaNote</h1>

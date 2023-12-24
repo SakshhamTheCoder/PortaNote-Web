@@ -1,8 +1,8 @@
 "use client";
-import Image from 'next/image';
 import { UserAuth } from "./context/AuthContext";
 import { useEffect } from 'react';
 import { useRouter } from "next/navigation";
+import Navbar from './components/Navbar';
 
 export default function Landing() {
   const router = useRouter();
@@ -12,6 +12,7 @@ export default function Landing() {
   }, [user]);
   return (
     <main className="flex min-h-screen">
+      <Navbar />
       <div className="flex flex-col items-center justify-center flex-1">
         <h1 className="text-6xl font-bold">Welcome to PortaNote</h1>
         <p className="mt-3 text-xl">A note-taking app accessible on the go</p>

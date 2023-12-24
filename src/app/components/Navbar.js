@@ -38,7 +38,7 @@ const Navbar = () => {
                     (
                         <>
                             <li className="nav-links px-4 cursor-pointer capitalize font-medium text-gray-950 hover:scale-105 hover:text-gray-500 duration-200 link-underline">
-                                <Link href="/home" className="rounded-full bg-white font-bold py-2 px-4">
+                                <Link href="/create" className="rounded-full bg-white font-bold py-2 px-4">
                                     <span><FaPlus className="inline-block" /> Create Note</span>
                                 </Link>
                             </li>
