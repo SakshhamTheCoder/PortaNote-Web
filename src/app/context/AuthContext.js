@@ -7,7 +7,7 @@ import {
     onAuthStateChanged,
 } from "firebase/auth";
 
-import { getFirestore, addDoc, collection, Timestamp } from "firebase/firestore";
+import { getFirestore, addDoc, collection, Timestamp, updateDoc, doc, deleteDoc } from "firebase/firestore";
 
 import { auth, firebase_app } from "../firebase";
 const db = getFirestore(firebase_app);
@@ -69,6 +69,25 @@ export const AuthContextProvider = ({ children }) => {
 
     };
 
+    const editNote = (id, title, content) => {
+        const note = {
+            title: title,
+            content: content,
+            date: Timestamp.now(),
+        };
+        updateDoc(doc(db, user.uid, id), note).then(() => {
+            console.log("Document successfully overwritten!");
+        }).catch((error) => { console.error("Error writing document: ", error); return false; });
+        return true;
+    };
+    const deleteNote = (id) => {
+        confirm("Are you sure you want to delete this note?") &&
+            deleteDoc(doc(db, user.uid, id)).then(() => {
+                console.log("Document successfully deleted!");
+            }).catch((error) => { console.error("Error writing document: ", error); return false; });
+        return true;
+    };
+
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             if (currentUser) setUser(currentUser);
@@ -79,7 +98,7 @@ export const AuthContextProvider = ({ children }) => {
     }, [user]);
 
     return (
-        <AuthContext.Provider value={{ user, pSignIn, pSignUp, addNote, logOut }}>
+        <AuthContext.Provider value={{ user, pSignIn, pSignUp, addNote, editNote, deleteNote, logOut }}>
             {loading ?
                 <div className="flex min-h-screen">
                     <div className="flex flex-col items-center justify-center flex-1">

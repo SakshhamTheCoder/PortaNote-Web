@@ -5,12 +5,14 @@ import { useRouter } from "next/navigation";
 import { getFirestore, query, getDocs, collection, orderBy } from "firebase/firestore";
 import { firebase_app } from '../firebase';
 import Navbar from "../components/Navbar";
+import Link from "next/link";
+import { MdDelete } from "react-icons/md";
 
 
-export default function Home() {
+export default function Notes() {
     const db = getFirestore(firebase_app);
     const router = useRouter();
-    const { user } = UserAuth();
+    const { user, deleteNote } = UserAuth();
     const [notes, setNotes] = useState([]);
     useEffect(() => {
         const fetchData = () => {
@@ -27,6 +29,12 @@ export default function Home() {
         else fetchData();
     }, [user]);
 
+    const handleDelete = (id) => async () => {
+        if (await deleteNote(
+            id
+        )) router.refresh();
+    };
+
     return (
         user ?
             <main className="flex min-h-screen">
@@ -36,8 +44,8 @@ export default function Home() {
                         {
                             notes.length > 0 ?
                                 notes.map((note, i) => (
-                                    <div
-                                        className="rounded-lg p-6 bg-neutral-700 block max-w-sm w-screen" key={i}>
+                                    <Link href={`/notes/${note.id}`} passHref
+                                        className="rounded-lg p-6 bg-neutral-700 block max-w-full hover:bg-neutral-500" key={i}>
                                         <h5
                                             className="mb-2 text-xl font-bold leading-tight text-neutral-50">
                                             {note.title}
@@ -45,10 +53,19 @@ export default function Home() {
                                         <p className="mb-4 font-light text-neutral-200 truncate">
                                             {note.content}
                                         </p>
-                                        <p className="text-sm font-light text-neutral-200">
-                                            Created at {note.date.toDate().toLocaleString()}
-                                        </p>
-                                    </div>
+                                        <div className="flex justify-between">
+                                            <p className="text-sm font-light text-neutral-200">
+                                                Created at {note.date.toDate().toLocaleString()}
+                                            </p>
+                                            <button
+                                                // onClick={
+                                                //     handleDelete
+                                                // }
+                                                className="rounded-full ml-4 bg-white px-4 cursor-pointer capitalize text-sm text-gray-950 hover:scale-105 hover:text-gray-500 duration-200 link-underline">
+                                                <MdDelete />
+                                            </button>
+                                        </div>
+                                    </Link>
 
 
                                     // <a href="#" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">

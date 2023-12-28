@@ -8,7 +8,7 @@ export default function Landing() {
   const router = useRouter();
   const { user } = UserAuth();
   useEffect(() => {
-    if (user != null) router.push("/home");
+    if (user != null) router.push("/notes");
   }, [user]);
   return (
     <main className="flex min-h-screen">

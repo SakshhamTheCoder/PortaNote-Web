@@ -12,7 +12,7 @@ export default function SignIn() {
     const handleSignIn = async (email, password) => {
         // if (!email || !password) return setMissing(true);
         if (!email || !password) return alert('Please enter a valid email and password.');
-        if (pSignIn(email, password)) router.push('/home');
+        if (pSignIn(email, password)) router.push('/notes');
     };
 
     return (

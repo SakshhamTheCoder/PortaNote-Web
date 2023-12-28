@@ -11,7 +11,7 @@ export default function SignUp() {
         // if (!email || !password) return setMissing(true);
         if (!email || !password) return alert('Please enter a valid email and password.');
         if (password !== cpassword) return alert('Passwords do not match.');
-        if (await pSignUp(email, password)) router.push('/home');
+        if (await pSignUp(email, password)) router.push('/notes');
     };
 
     return (
