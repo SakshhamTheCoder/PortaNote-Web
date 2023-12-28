@@ -1,8 +1,8 @@
-"use client";
-import { UserAuth } from "../context/AuthContext";
-import { useRouter } from "next/navigation";
-import "../globals.css";
-import Navbar from "../components/Navbar";
+'use client';
+import { UserAuth } from '../context/AuthContext';
+import { useRouter } from 'next/navigation';
+import '../globals.css';
+import Navbar from '../components/Navbar';
 
 export default function Create() {
     const router = useRouter();
@@ -11,10 +11,7 @@ export default function Create() {
     // const [loading, setLoading] = useState(true);
 
     const handleSubmit = async (title, content) => {
-        if (addNote(
-            title,
-            content
-        )) router.push('/notes');
+        if (addNote(title, content)) router.push('/notes');
     };
 
     return (
@@ -23,31 +20,46 @@ export default function Create() {
             <div className="flex flex-col items-center justify-center flex-1">
                 <div className="w-full max-w-xs">
                     <h1 className="text-5xl font-bold text-center">Create a PortaNote</h1>
-                </div></div>
+                </div>
+            </div>
             <div className="flex flex-col items-center justify-center flex-1">
-
                 <div class="w-full max-w-4xl">
                     <form class="bg-transparent border border-gray-500 shadow-md rounded px-8 pt-6 pb-8 mb-4">
                         <div class="mb-4">
                             <label class="block text-sm font-bold mb-2" for="title">
                                 Title
                             </label>
-                            <input class="bg-transparent shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" id="title" type="text" placeholder="Enter title here" />
+                            <input
+                                class="bg-transparent shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+                                id="title"
+                                type="text"
+                                placeholder="Enter title here"
+                            />
                         </div>
                         <div class="mb-6">
                             <label class="block text-sm font-bold mb-2" for="content">
                                 Content
                             </label>
-                            <textarea class="h-32 bg-transparent shadow appearance-none border rounded w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="content" type="text" placeholder="Enter content here" />
+                            <textarea
+                                class="h-32 bg-transparent shadow appearance-none border rounded w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                                id="content"
+                                type="text"
+                                placeholder="Enter content here"
+                            />
                         </div>
                         <div class="flex items-center justify-between">
-                            <button onClick={() => handleSubmit(
-                                document.getElementById('title').value,
-                                document.getElementById('content').value
-                            )} class="rounded-full bg-white font-bold py-2 px-4 cursor-pointer capitalize text-gray-950 hover:scale-105 hover:text-gray-500 duration-200 link-underline" type="button">
+                            <button
+                                onClick={() =>
+                                    handleSubmit(
+                                        document.getElementById('title').value,
+                                        document.getElementById('content').value
+                                    )
+                                }
+                                class="rounded-full bg-white font-bold py-2 px-4 cursor-pointer capitalize text-gray-950 hover:scale-105 hover:text-gray-500 duration-200 link-underline"
+                                type="button"
+                            >
                                 Save
                             </button>
-
                         </div>
                     </form>
                 </div>
