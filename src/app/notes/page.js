@@ -74,7 +74,7 @@ export default function Notes() {
                     ) : (
                         <div className="flex flex-col items-center justify-center flex-1">
                             <h1 className="text-6xl font-bold">No notes</h1>
-                            <p className="mt-3 text-xl">Create some notes by pressing the + icon</p>
+                            <p className="mt-3 text-xl">Create one using the Create Button above</p>
                         </div>
                     )}
                 </div>

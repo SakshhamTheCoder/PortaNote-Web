@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { Finger_Paint } from 'next/font/google';
 import { UserAuth } from '../context/AuthContext';
-import { FaPlus } from 'react-icons/fa';
+import { MdAdd } from 'react-icons/md';
 
 const finger_paint = Finger_Paint({ subsets: ['latin'], display: 'swap', weight: ['400'] });
 
@@ -33,7 +33,7 @@ const Navbar = () => {
                         <li className="nav-links px-4 cursor-pointer capitalize font-medium text-gray-950 hover:scale-105 hover:text-gray-500 duration-200 link-underline">
                             <Link href="/create" className="rounded-full bg-white font-bold py-2 px-4">
                                 <span>
-                                    <FaPlus className="inline-block" /> Create Note
+                                    <MdAdd className="inline-block" /> Create Note
                                 </span>
                             </Link>
                         </li>
@@ -41,7 +41,7 @@ const Navbar = () => {
                             onClick={() => logOut()}
                             className="nav-links px-4 cursor-pointer font-medium hover:scale-105 hover:text-gray-500 duration-200 link-underline"
                         >
-                            Welcome {user.email.split('@')[0]}
+                            Welcome {user.email}
                         </p>
                     </>
                 ) : (

@@ -6,6 +6,7 @@ import { getFirestore, getDoc, doc } from 'firebase/firestore';
 import { firebase_app } from '../../firebase';
 import Navbar from '../../components/Navbar';
 import { useRouter } from 'next/navigation';
+import { MdSaveAs } from 'react-icons/md';
 
 export default function View() {
     const router = useRouter();
@@ -38,7 +39,7 @@ export default function View() {
             <Navbar />
             <div className="flex flex-col items-center justify-center flex-1">
                 <div className="w-full max-w-xs">
-                    <h1 className="text-5xl font-bold text-center">View/Edit your PortaNote</h1>
+                    <h1 className="text-5xl font-bold text-center">View/Edit note</h1>
                 </div>
             </div>
             <div className="flex flex-col items-center justify-center flex-1">
@@ -80,7 +81,7 @@ export default function View() {
                                 class="rounded-full bg-white font-bold py-2 px-4 cursor-pointer capitalize text-gray-950 hover:scale-105 hover:text-gray-500 duration-200 link-underline"
                                 type="button"
                             >
-                                Save
+                                <MdSaveAs className="inline-block" /> Save Note
                             </button>
                         </div>
                     </form>

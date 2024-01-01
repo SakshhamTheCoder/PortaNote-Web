@@ -3,6 +3,7 @@ import { UserAuth } from '../context/AuthContext';
 import { useRouter } from 'next/navigation';
 import '../globals.css';
 import Navbar from '../components/Navbar';
+import { MdSaveAs } from 'react-icons/md';
 
 export default function Create() {
     const router = useRouter();
@@ -19,7 +20,7 @@ export default function Create() {
             <Navbar />
             <div className="flex flex-col items-center justify-center flex-1">
                 <div className="w-full max-w-xs">
-                    <h1 className="text-5xl font-bold text-center">Create a PortaNote</h1>
+                    <h1 className="text-5xl font-bold text-center">Create note</h1>
                 </div>
             </div>
             <div className="flex flex-col items-center justify-center flex-1">
@@ -58,7 +59,7 @@ export default function Create() {
                                 class="rounded-full bg-white font-bold py-2 px-4 cursor-pointer capitalize text-gray-950 hover:scale-105 hover:text-gray-500 duration-200 link-underline"
                                 type="button"
                             >
-                                Save
+                                <MdSaveAs className="inline-block" /> Save Note
                             </button>
                         </div>
                     </form>
