@@ -3,6 +3,8 @@ import './globals.css';
 import { AuthContextProvider } from './context/AuthContext';
 import { getSelectorsByUserAgent } from 'react-device-detect';
 import { headers } from 'next/headers';
+import favicon from '../../public/assets/images/favicon.ico';
+import appleIcon from '../../public/assets/images/apple-touch-icon.png';
 
 const poppins = Poppins({ subsets: ['latin'], display: 'swap', weight: ['500'] });
 
@@ -15,6 +17,8 @@ export default function RootLayout({ children }) {
     const { isMobile } = getSelectorsByUserAgent(headers().get('user-agent') ?? '');
     return (
         <html lang="en">
+            <link rel="icon" href={favicon.src} sizes="any" />
+            <link rel="apple-touch-icon" href={appleIcon.src} />
             <body className={poppins.className}>
                 {isMobile ? (
                     <>
